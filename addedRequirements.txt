@@ -1,8 +1,8 @@
-Add a Store class and a Inventory class.
-A store will have an Inventory
-A store should be able to return the whole inventory
-A store should be able to restock an item (increase the number of that item available)
-When items are added to a cart, they are subtracted from inventory
-If an item isn’t in stock, it should return a message that the item is not available
-You should be able to add new items to inventory (add a brand new item that wasn’t available previously)
-Stores should also be able to discontinue items, and when that happens it should return a message saying the item has been discontinued
+1.Add a Store class and a Inventory class.
+2.A store will have an Inventory
+3.A store should be able to return the whole inventory
+4.A store should be able to restock an item (increase the number of that item available)
+5.When items are added to a cart, they are subtracted from inventory
+6.If an item isn’t in stock, it should return a message that the item is not available
+7.You should be able to add new items to inventory (add a brand new item that wasn’t available previously)
+8.Stores should also be able to discontinue items, and when that happens it should return a message saying the item has been discontinued

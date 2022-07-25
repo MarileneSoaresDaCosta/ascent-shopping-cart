@@ -1,12 +1,17 @@
 package com.galvanize;
 
+import java.util.Collection;
+import java.util.HashMap;
+
 public class Store {
-    public Inventory getInventory() {
-        return new Inventory();
+    private Inventory inventory = new Inventory();
+
+    public Inventory getInventory(){
+        return this.inventory;
     }
 
-    private static class Inventory {
-
+    public HashMap<Integer, Item> getInventoryStorage() {
+        return this.inventory.getStorage();
     }
 
 }
