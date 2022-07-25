@@ -3,6 +3,7 @@ package com.galvanize;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 
 public class Cart{
@@ -33,7 +34,11 @@ public class Cart{
     }
 
     public int itemQuantities(){
-        return items.size();
+        Integer result = 0;
+        for (Integer q : items.keySet()) {
+            result += q;
+        }
+        return result;
     }
 
     public HashMap<Integer, Item> itemizedList(){

@@ -54,7 +54,7 @@ Given I have an empty cart, when I add more than one of an item,
         cart.addItem(208, 5, 12, false);
         cart.addItem(217, 2, 20, false);
 
-        assertEquals(3, cart.itemQuantities());
+        assertEquals(17, cart.itemQuantities());
     }
     /*
     Given I have an empty cart, when I add items,
