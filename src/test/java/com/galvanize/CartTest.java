@@ -33,4 +33,10 @@ public class CartTest {
         assertEquals(0, cart.totalPrice());
     }
 
+    @Test
+    public void returnsTotalPriceWhenAddsItemToCart(){
+        cart.addItem(201, 10);
+        System.out.println("totalPrice: " + cart.totalPrice());
+        assertEquals(20, cart.totalPrice());
+    }
 }
