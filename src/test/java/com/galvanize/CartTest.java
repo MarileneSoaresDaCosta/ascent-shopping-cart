@@ -34,7 +34,15 @@ public class CartTest {
     }
 
     @Test
-    public void returnsTotalPriceWhenAddsItemToCart(){
+    public void returnsTotalPriceWhenAddsOneItemToEmptyCart(){
+        cart.addItem(201, 10);
+        System.out.println("totalPrice: " + cart.totalPrice());
+        assertEquals(20, cart.totalPrice());
+    }
+
+    @Test
+    public void returnsTotalPriceWhenAddsOneItemToCartWithItems(){
+
         cart.addItem(201, 10);
         System.out.println("totalPrice: " + cart.totalPrice());
         assertEquals(20, cart.totalPrice());

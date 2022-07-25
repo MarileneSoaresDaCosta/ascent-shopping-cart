@@ -12,4 +12,8 @@ public class Store {
     public int getPrice(int productID){
         return 2;
     }
+
+    public void addProduct(int newProductID, int newProductPrice) {
+        prices.put(newProductID, newProductPrice);
+    }
 }
