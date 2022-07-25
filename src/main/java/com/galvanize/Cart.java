@@ -1,15 +1,13 @@
 package com.galvanize;
 
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
+import java.util.Map;
 
 
-public class Cart extends Store{
-
-    private HashMap<Integer, ArrayList<Integer>> items = new HashMap<>();
+public class Cart{
+    // items { integer quantity : Item item}
+    private HashMap<Integer, Item> items = new HashMap<>();
     public boolean isEmpty() {
         return true;
     }
@@ -19,29 +17,23 @@ public class Cart extends Store{
             return 0;
         }
         int result = 0;
-
-        // iterate over items in cart, picking quantity and looking for price in store
-        // get price
-//        for (int i = 0; i < items.size(); i++) {
-//            int price =
-//        }
-
+        for (Map.Entry<Integer, Item> entry : items.entrySet()) {
+            Integer quantity = entry.getKey();
+            Item item = entry.getValue();
+            int price = item.getPrice();
+            result += quantity * price;
+        }
 
         return result;
     }
 
-    public void addItem(int productID, int quantity) {
-        // get price for productID
-        int price = super.getPrice(productID);
-        // create array with price and quantity
-        ArrayList<Integer> item = new ArrayList<>();
-        item.add(quantity);
-        item.add(price);
-        this.items.put(productID, item);
+    public void addItem(int id, int quantity, int price) {
+        Item addedItem = new Item(id, price);
+        this.items.put(quantity, addedItem);
     }
 
-    public Set<Integer> getProductIds(){
-        Set<Integer> productIdsList = this.items.keySet();
-        return productIdsList;
-    }
+//    public HashMap<Integer, ArrayList<Integer>> getProductIds(){
+//        HashMap<Integer, ArrayList<Integer>> copyOfItems = this.items;
+//        return copyOfItems;
+//    }
 }
