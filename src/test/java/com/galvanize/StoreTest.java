@@ -22,8 +22,7 @@ public class StoreTest {
         // check if price of 1st item is correct
         System.out.println("price for item 201 is: " + newStore.prices.get(201));
         assertEquals(2, newStore.prices.get(201));
-
-
-
     }
+
+
 }

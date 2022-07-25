@@ -4,6 +4,7 @@ package com.galvanize;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 
 public class Cart extends Store{
@@ -18,10 +19,14 @@ public class Cart extends Store{
             return 0;
         }
         int result = 0;
-        // iterate over items
-        for(ArrayList<Integer> product : items.values()) {
-            result += product.get(0) * product.get(1);
-        }
+
+        // iterate over items in cart, picking quantity and looking for price in store
+        // get price
+//        for (int i = 0; i < items.size(); i++) {
+//            int price =
+//        }
+
+
         return result;
     }
 
@@ -33,5 +38,10 @@ public class Cart extends Store{
         item.add(quantity);
         item.add(price);
         this.items.put(productID, item);
+    }
+
+    public Set<Integer> getProductIds(){
+        Set<Integer> productIdsList = this.items.keySet();
+        return productIdsList;
     }
 }

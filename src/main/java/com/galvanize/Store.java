@@ -10,7 +10,10 @@ public class Store {
     protected HashMap<Integer, Boolean> salesStatus= new HashMap<>();
 
     public int getPrice(int productID){
-        return 2;
+//        int price = this.prices.get(productID);
+//        System.out.println("sout getPrice: " + price);
+//        return price;
+        return 1;
     }
 
     public void addProduct(int newProductID, int newProductPrice) {
