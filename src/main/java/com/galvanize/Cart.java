@@ -32,8 +32,12 @@ public class Cart{
         this.items.put(quantity, addedItem);
     }
 
-//    public HashMap<Integer, ArrayList<Integer>> getProductIds(){
-//        HashMap<Integer, ArrayList<Integer>> copyOfItems = this.items;
-//        return copyOfItems;
-//    }
+    public int itemQuantities(){
+        return items.size();
+    }
+
+    public HashMap<Integer, Item> itemizedList(){
+        HashMap<Integer, Item> itemsCopy = new HashMap<>(items);
+        return itemsCopy;
+    }
 }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -42,28 +43,45 @@ public class CartTest {
         System.out.println("totalPrice: " + cart.totalPrice());
         assertEquals(20, cart.totalPrice());
     }
-//
-//    @Test
-//    public void printsListOfItemsInCartAndReturnsCorrectSize(){
-//        // adds 3 items to cart
-//        cart.addItem(201, 10);
-//        cart.addItem(208, 5);
-//        cart.addItem(217, 3);
-//        HashMap<Integer, ArrayList<Integer>> actual = cart.getProductIds();
-//        for(Integer id : actual.keySet()) {
-//            System.out.println("id [q, p]: " + id + " " + actual.get(id));
-//        }
-//        assertEquals(3, actual.size());
-//    }
-//
-////    @Test
-////    public void returnsTotalPriceWhenAddsOneItemToCartWithItems(){
-////        // adds 3 items to cart
-////        cart.addItem(201, 10);
-////        cart.addItem(208, 5);
-////        cart.addItem(217, 3);
-////        System.out.println(cart.get());
-////        System.out.println("totalPrice: " + cart.totalPrice());
-////        assertEquals(119, cart.totalPrice());
-////    }
+
+    @Test
+    public void returnsTotalPriceWhenAddsOneItemToCartWithItems(){
+        cart.addItem(201, 10, 2);
+        cart.addItem(208, 5, 12);
+        cart.addItem(217, 2, 20);
+        assertEquals(120, cart.totalPrice());
+    }
+/*
+Given I have an empty cart, when I add more than one of an item,
+ then I expect itemQuantities() to show the number of items
+  I have added.
+ */
+    @Test
+    public void returnsThreeWhen3ItemsWereAdded(){
+        cart.addItem(201, 10, 2);
+        cart.addItem(208, 5, 12);
+        cart.addItem(217, 2, 20);
+
+        assertEquals(3, cart.itemQuantities());
+    }
+    /*
+    Given I have an empty cart, when I add items,
+    then I expect itemizedList() reflect the items
+    I have added along with their price and quantity.
+     */
+    @Test
+    public void returnsItemsListWhenCartHasItems(){
+        cart.addItem(201, 10, 2);
+        cart.addItem(208, 5, 12);
+        cart.addItem(217, 2, 20);
+
+        // check size
+        assertEquals(3, cart.itemizedList().size());
+
+        // check contents
+        Item itemOfPrice12 = cart.itemizedList().get(5);
+
+        assertEquals(12, itemOfPrice12.getPrice());
+
+        }
 }
