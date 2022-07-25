@@ -5,7 +5,7 @@ public class Item {
     protected int price;
     protected boolean onSale = false;
 
-    Item(int id, int price) {
+    Item(int id, int price, boolean onSale) {
         this.id = id;
         this.price = price;
     }
@@ -17,4 +17,5 @@ public class Item {
     public boolean isOnSale(){
         return this.onSale;
     }
+
 }

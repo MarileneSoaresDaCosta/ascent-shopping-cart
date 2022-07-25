@@ -39,17 +39,9 @@ public class CartTest {
     }
     @Test
     public void returnsTotalPriceWhenAddsOneItemToEmptyCart(){
-        cart.addItem(201, 10, 2);
+        cart.addItem(201, 10, 2, false);
         System.out.println("totalPrice: " + cart.totalPrice());
         assertEquals(20, cart.totalPrice());
-    }
-
-    @Test
-    public void returnsTotalPriceWhenAddsOneItemToCartWithItems(){
-        cart.addItem(201, 10, 2);
-        cart.addItem(208, 5, 12);
-        cart.addItem(217, 2, 20);
-        assertEquals(120, cart.totalPrice());
     }
 /*
 Given I have an empty cart, when I add more than one of an item,
@@ -58,9 +50,9 @@ Given I have an empty cart, when I add more than one of an item,
  */
     @Test
     public void returnsThreeWhen3ItemsWereAdded(){
-        cart.addItem(201, 10, 2);
-        cart.addItem(208, 5, 12);
-        cart.addItem(217, 2, 20);
+        cart.addItem(201, 10, 2, false);
+        cart.addItem(208, 5, 12, false);
+        cart.addItem(217, 2, 20, false);
 
         assertEquals(3, cart.itemQuantities());
     }
@@ -71,17 +63,42 @@ Given I have an empty cart, when I add more than one of an item,
      */
     @Test
     public void returnsItemsListWhenCartHasItems(){
-        cart.addItem(201, 10, 2);
-        cart.addItem(208, 5, 12);
-        cart.addItem(217, 2, 20);
+        cart.addItem(201, 10, 2, false);
+        cart.addItem(208, 5, 12, false);
+        cart.addItem(217, 2, 20, false);
 
         // check size
         assertEquals(3, cart.itemizedList().size());
 
-        // check contents
+        // check contents - one example
         Item itemOfPrice12 = cart.itemizedList().get(5);
-
         assertEquals(12, itemOfPrice12.getPrice());
-
         }
+
+    /*
+    Given I have an empty cart, when I add more than one of an item,
+    then I expect totalPrice() to reflect both the item price and quantity.
+     */
+    @Test
+    public void returnsTotalPriceWhenAddsOneItemToCartWithItems(){
+        cart.addItem(201, 10, 2, false);
+        cart.addItem(208, 5, 12, false);
+        cart.addItem(217, 2, 20, false);
+        assertEquals(120, cart.totalPrice());
+    }
+    /*
+    Given I have a cart with items that are not on sale,
+    when I add items that are on sale,
+    I expect onSaleItems() to include only the items on sale.
+    */
+    @Test
+    public void onSaleItemsReturnsOnlyItemsOnSale(){
+        cart.addItem(201, 10, 2, true);
+        cart.addItem(208, 5, 12, false);
+        cart.addItem(217, 2, 20, true);
+
+        assertEquals(2, cart.onSaleItems().size());
+    }
+
+
 }

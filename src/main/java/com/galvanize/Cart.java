@@ -27,8 +27,8 @@ public class Cart{
         return result;
     }
 
-    public void addItem(int id, int quantity, int price) {
-        Item addedItem = new Item(id, price);
+    public void addItem(int id, int quantity, int price, boolean onSale) {
+        Item addedItem = new Item(id, price, onSale);
         this.items.put(quantity, addedItem);
     }
 
@@ -39,5 +39,21 @@ public class Cart{
     public HashMap<Integer, Item> itemizedList(){
         HashMap<Integer, Item> itemsCopy = new HashMap<>(items);
         return itemsCopy;
+    }
+
+
+
+    public HashMap<Integer, Item> onSaleItems() {
+        HashMap<Integer, Item> itemsOnSale = new HashMap<>();
+        // iterate over items and pick only items onSale
+        for (Map.Entry<Integer, Item> entry : items.entrySet()) {
+            Integer quantity = entry.getKey();
+            Item item = entry.getValue();
+            boolean onSale = item.isOnSale();
+            if (onSale) {
+                itemsOnSale.put(quantity, item);
+            }
+        }
+        return itemsOnSale;
     }
 }
