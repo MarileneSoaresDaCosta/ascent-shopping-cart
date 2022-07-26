@@ -19,4 +19,10 @@ public class Item {
         return this.onSale;
     }
 
+    public int getId() {
+        return this.id;
+    }
+
+
+
 }

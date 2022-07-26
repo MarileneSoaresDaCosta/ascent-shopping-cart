@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 
-public class Cart{
+public class Cart extends Store{
     // items { integer quantity : Item item}
     private HashMap<Integer, Item> items = new HashMap<>();
     public boolean isEmpty() {
@@ -24,13 +24,17 @@ public class Cart{
             int price = item.getPrice();
             result += quantity * price;
         }
-
         return result;
     }
 
     public void addItem(int id, int quantity, int price, boolean onSale) {
         Item addedItem = new Item(id, price, onSale);
+//        int searchedId = super.getInventory().getItemQuantity(id);
+//        System.out.println("searchedId in add Item: " + searchedId);
         this.items.put(quantity, addedItem);
+        // update inventory
+//        super.getInventory().update(id, -quantity);
+
     }
 
     public int itemQuantities(){
